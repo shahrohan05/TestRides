@@ -1,0 +1,41 @@
+plugins {
+    id 'application'
+    id 'jacoco'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+
+	// not required in production, only here for running junit test case, for visualization in eclipse IDE
+	implementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+
+    // Use JUnit test framework
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    
+    //mockito framework
+    testImplementation "org.mockito:mockito-core:2.19.0" // core framework
+    testImplementation "org.mockito:mockito-junit-jupiter:3.0.0" // junit mockito extension - MockitoExtension.class
+}
+
+application {
+	mainClassName = 'com.testrides.Application'
+}
+
+// to exclude com.pluralflights.tests package from jacoco coverage report
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: 'com/pluralflights/tests/**')
+        }))
+    }
+}
