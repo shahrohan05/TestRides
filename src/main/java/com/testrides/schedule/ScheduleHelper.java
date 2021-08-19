@@ -1,6 +1,6 @@
 package com.testrides.schedule;
 
-public class SchedulingHelper {
+public class ScheduleHelper {
 	
 	/** Not to be tested/ being tested separately **/
 	public String notifyRiders() {

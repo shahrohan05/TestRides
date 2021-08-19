@@ -1,29 +1,27 @@
 package com.testrides.schedule;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.BooleanSupplier;
 
 import com.testrides.ride.Ride;
 import com.testrides.rider.Rider;
 
-public class Schedule {
+public class ScheduleMaintenance {
 
 	private Map<Ride, Set<Rider>> schedule;
 
-	private SchedulingHelper schedulingHelper;
+	private ScheduleHelper schedulingHelper;
 
-	public Schedule() {
+	public ScheduleMaintenance() {
 	}
 
-	public Schedule(Map<Ride, Set<Rider>> schedule) {
+	public ScheduleMaintenance(Map<Ride, Set<Rider>> schedule) {
 		super();
 		this.schedule = schedule;
 	}
 
-	public Schedule(Map<Ride, Set<Rider>> schedule, SchedulingHelper schedulingHelper) {
+	public ScheduleMaintenance(Map<Ride, Set<Rider>> schedule, ScheduleHelper schedulingHelper) {
 		super();
 		this.schedule = schedule;
 		this.setSchedulingHelper(schedulingHelper);
@@ -38,12 +36,15 @@ public class Schedule {
 	}
 
 	
-	 public boolean scheduleRide(Rider mike, Ride availableRide) { 
-		 return false; 
-	 }
+	 /*public boolean scheduleRide(Rider rider, Ride ride) {
+		 if(riderEligible(rider)) {
+			 return schedule.get(ride).add(rider);
+		 }
+		return false;
+	 }*/
 	 
 
-	/*public boolean scheduleRide(Rider rider, Ride ride) {
+	public boolean scheduleRide(Rider rider, Ride ride) {
 		if (!schedule.containsKey(ride)) {
 			schedule.put(ride, new HashSet<Rider>());
 		}
@@ -54,7 +55,7 @@ public class Schedule {
 		}
 
 		return false;
-	}*/
+	}
 
 	private boolean rideAvailable(Ride ride) {
 		// check if the ride capacity is full
@@ -67,11 +68,11 @@ public class Schedule {
 
 	}
 
-	public SchedulingHelper getSchedulingHelper() {
+	public ScheduleHelper getSchedulingHelper() {
 		return schedulingHelper;
 	}
 
-	public void setSchedulingHelper(SchedulingHelper schedulingHelper) {
+	public void setSchedulingHelper(ScheduleHelper schedulingHelper) {
 		this.schedulingHelper = schedulingHelper;
 	}
 
