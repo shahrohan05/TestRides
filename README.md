@@ -1,5 +1,5 @@
 # TestRides
-Hypothetical system to understand TDD with JUnit 5 and Mockito
+Hypothetical system to understand TDD with **JUnit 5 and Mockito**.
 
 **Business objects:**
 - n number of rides and n number of riders
